@@ -59,9 +59,3 @@ covid-longcovid-ml/
 ## Dataset
 
 We use the Mexico COVID-19 open dataset (or equivalent with the same columns). Long COVID is defined as: confirmed positive (CLASIFFICATION_FINAL 1–3) and `PATIENT_TYPE == 2` (hospitalized / returned to hospital). See the research plan in the repo and [data/README.md](data/README.md).
-
-## License
-
-For academic use; cite the dataset and this repo if you use or adapt the pipeline.
-# Covid-19
-# Covid-19

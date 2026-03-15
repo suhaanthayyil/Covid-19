@@ -63,3 +63,4 @@ We use the Mexico COVID-19 open dataset (or equivalent with the same columns). L
 ## License
 
 For academic use; cite the dataset and this repo if you use or adapt the pipeline.
+# Covid-19

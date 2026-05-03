@@ -56,6 +56,29 @@ covid-longcovid-ml/
 4. **Or run step-by-step in Jupyter**
    - Open `notebooks/01_EDA.ipynb` through `04_explainability.ipynb` in order.
 
+## Revision rerun (peer review)
+
+`rerun_ml.py` reproduces every number in the revised manuscript in one shot:
+
+- 5-fold grid search hyperparameter tuning for LR, RF, SVM; randomized search for XGBoost
+- Fold-aware imblearn pipeline (SMOTE inside training fold only, no leakage)
+- Mode imputation for binary clinical features, median for age, conditional scaling
+- DeLong's test for paired AUC comparisons across all four models
+- 1,000-resample bootstrap 95% CIs for AUC, precision, recall
+- Two simple baselines: rule-based (age>60 OR pneumonia) and minimal LR (age + pneumonia only)
+- Sensitivity analysis with pneumonia removed (addresses temporal leakage concern)
+- Calibration curve + Brier score
+- Decision-curve analysis across thresholds 0.05 to 0.50
+- Precision-recall curves and F1-vs-threshold plots
+- Regenerated figures 3, 4, 5, 6, 6b, 6c, 6d, 6e, 7, 8, 9
+
+Run:
+
+    pip install -r requirements.txt
+    python rerun_ml.py
+
+Expects `data/raw/Covid Data.csv` (Mexico COVID-19 open dataset). Outputs land in `revision_outputs/` including `results.json`, `selected_hyperparameters.json`, regenerated figures, and saved model pickles.
+
 ## Dataset
 
 We use the Mexico COVID-19 open dataset (or equivalent with the same columns). Long COVID is defined as: confirmed positive (CLASIFFICATION_FINAL 1–3) and `PATIENT_TYPE == 2` (hospitalized / returned to hospital). See the research plan in the repo and [data/README.md](data/README.md).

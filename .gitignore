@@ -16,3 +16,5 @@ venv/
 *.swp
 # OS
 .DS_Store
+# Revision outputs
+revision_outputs/
